@@ -1,1 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Colazo North America — Coke Company UAT</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --accent:#e51f2b;
+    --accent2:#ff7b54;
+    --ink:#12141a;
+    --muted:#687080;
+    --bg:#f6f8fb;
+    --card:#fff;
+    --line:#e7eaf0;
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Inter,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.6;
+}
+
+/* HEADER */
+
+header{
+    position:fixed;
+    z-index:20;
+    top:0;
+    left:0;
+    width:100%;
+    padding:16px 6%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:rgba(255,255,255,.78);
+    backdrop-filter:blur(16px);
+    border-bottom:1px solid rgba(255,255,255,.5);
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:11px;
+    text-decoration:none;
+    color:var(--ink);
+    font-weight:800;
+    font-size:1.35rem;
+}
+
+.logo{
+    width:42px;
+    height:42px;
+    border-radius:13px;
+
+    background:linear-gradient(
+        135deg,
+        var(--accent),
+        var(--accent2)
+    );
+
+    display:grid;
+    place-items:center;
+
+    color:white;
+    font-family:Poppins;
+    font-size:1.25rem;
+
+    box-shadow:
+        0 8px 22px rgba(229,31,43,.28);
+}
+
+.env{
+    font-size:.68rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    padding:5px 9px;
+    border-radius:20px;
+    background:#111;
+    color:#fff;
+    margin-left:5px;
+}
+
+nav a{
+    color:#4c5361;
+    text-decoration:none;
+    margin-left:25px;
+    font-size:.92rem;
+    font-weight:600;
+}
+
+nav a:hover{
+    color:var(--accent);
+}
+
+/* HERO */
+
+.hero{
+    min-height:780px;
+    padding:150px 6% 90px;
+
+    display:flex;
+    align-items:center;
+
+    color:#fff;
+
+    position:relative;
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(7,10,17,.88),
+            rgba(7,10,17,.38)
+        ),
+        url('https://unsplash.com/photos/wireless-connections-on-a-futuristic-city-YYFmjdnzivc')
+        center/cover;
+}
+
+.hero:after{
+    content:"";
+
+    position:absolute;
+    inset:auto -10% -180px;
+
+    height:300px;
+
+    background:var(--bg);
+
+    border-radius:50% 50% 0 0;
+}
+
+.hero-content{
+    max-width:780px;
+    position:relative;
+    z-index:2;
+}
+
+.eyebrow{
+    display:inline-flex;
+    gap:8px;
+    align-items:center;
+
+    padding:7px 12px;
+
+    border:1px solid rgba(255,255,255,.25);
+
+    background:rgba(255,255,255,.1);
+
+    border-radius:30px;
+
+    text-transform:uppercase;
+    letter-spacing:.14em;
+
+    font-size:.7rem;
+}
+
+h1{
+    font-family:Poppins;
+
+    font-size:clamp(
+        3.2rem,
+        7vw,
+        6.5rem
+    );
+
+    line-height:1.02;
+
+    margin:24px 0 22px;
+
+    letter-spacing:-.05em;
+}
+
+.hero p{
+    font-size:1.12rem;
+    max-width:650px;
+    color:#e9ecf2;
+}
+
+.actions{
+    display:flex;
+    gap:14px;
+    margin-top:34px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-block;
+
+    padding:13px 22px;
+
+    border-radius:14px;
+
+    text-decoration:none;
+
+    font-weight:700;
+}
+
+.primary{
+    background:#fff;
+    color:#111;
+}
+
+.secondary{
+    border:1px solid rgba(255,255,255,.35);
+    color:#fff;
+    background:rgba(255,255,255,.08);
+}
+
+/* COMMON */
+
+.wrap{
+    width:min(1180px,88%);
+    margin:auto;
+}
+
+/* STATS */
+
+.stats{
+    margin-top:-35px;
+
+    position:relative;
+    z-index:5;
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+
+    background:#fff;
+
+    border:1px solid var(--line);
+
+    border-radius:24px;
+
+    box-shadow:
+        0 20px 55px rgba(15,20,30,.09);
+
+    overflow:hidden;
+}
+
+.stat{
+    padding:27px;
+
+    border-right:1px solid var(--line);
+
+    text-align:center;
+}
+
+.stat:last-child{
+    border-right:0;
+}
+
+.stat strong{
+    display:block;
+
+    font-family:Poppins;
+
+    font-size:2rem;
+
+    color:var(--accent);
+}
+
+.stat span{
+    font-size:.82rem;
+    color:var(--muted);
+}
+
+/* SECTIONS */
+
+section{
+    padding:100px 0;
+}
+
+.section-head{
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:30px;
+
+    align-items:end;
+
+    margin-bottom:35px;
+}
+
+.section-head h2{
+    font-family:Poppins;
+
+    font-size:2.6rem;
+
+    line-height:1.1;
+}
+
+.section-head p{
+    max-width:520px;
+    color:var(--muted);
+}
+
+/* PRODUCTS */
+
+.products{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:24px;
+}
+
+.product-card{
+    background:var(--card);
+
+    border:1px solid var(--line);
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    box-shadow:
+        0 12px 35px rgba(15,20,30,.06);
+
+    transition:.3s;
+}
+
+.product-card:hover{
+    transform:translateY(-8px);
+
+    box-shadow:
+        0 22px 45px rgba(15,20,30,.12);
+}
+
+.product-image{
+    height:245px;
+
+    background-size:cover;
+    background-position:center;
+}
+
+.product-body{
+    padding:23px;
+}
+
+.pill{
+    display:inline-block;
+
+    font-size:.68rem;
+
+    font-weight:800;
+
+    text-transform:uppercase;
+
+    letter-spacing:.1em;
+
+    color:var(--accent);
+
+    background:#fff0f1;
+
+    padding:6px 9px;
+
+    border-radius:20px;
+}
+
+.product-body h3{
+    font-family:Poppins;
+
+    font-size:1.45rem;
+
+    margin:13px 0 6px;
+}
+
+.product-body p{
+    color:var(--muted);
+
+    font-size:.92rem;
+
+    margin-bottom:18px;
+}
+
+.outline-btn{
+    background:white;
+
+    border:1px solid #dfe3ea;
+
+    border-radius:10px;
+
+    padding:9px 13px;
+
+    font-weight:700;
+
+    cursor:pointer;
+}
+
+.outline-btn:hover{
+    border-color:var(--accent);
+
+    color:var(--accent);
+}
+
+/* FEATURES */
+
+.feature-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:18px;
+}
+
+.feature{
+    display:flex;
+
+    gap:17px;
+
+    background:white;
+
+    border:1px solid var(--line);
+
+    padding:24px;
+
+    border-radius:20px;
+}
+
+.feature-icon{
+    min-width:48px;
+
+    height:48px;
+
+    border-radius:15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--accent),
+            var(--accent2)
+        );
+
+    color:white;
+
+    display:grid;
+
+    place-items:center;
+
+    font-size:1.25rem;
+}
+
+.feature h3{
+    margin-bottom:4px;
+
+    font-family:Poppins;
+}
+
+.feature p{
+    color:var(--muted);
+
+    font-size:.9rem;
+}
+
+/* CAMPAIGN */
+
+.banner{
+    border-radius:30px;
+
+    padding:60px;
+
+    background:
+        linear-gradient(
+            120deg,
+            var(--accent),
+            var(--accent2)
+        );
+
+    color:white;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.banner:after{
+    content:"NA-UAT";
+
+    position:absolute;
+
+    right:4%;
+    bottom:-35px;
+
+    font-size:12rem;
+
+    font-weight:800;
+
+    opacity:.09;
+}
+
+.banner h2{
+    font-family:Poppins;
+
+    font-size:2.8rem;
+
+    max-width:650px;
+
+    line-height:1.1;
+}
+
+.banner p{
+    max-width:600px;
+
+    margin:15px 0 25px;
+
+    color:rgba(255,255,255,.88);
+}
+
+/* FOOTER */
+
+footer{
+    background:#101217;
+
+    color:#c7cbd4;
+
+    padding:35px 6%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+    font-size:.85rem;
+}
+
+footer strong{
+    color:white;
+}
+
+/* MOBILE */
+
+@media(max-width:850px){
+
+    nav{
+        display:none;
+    }
+
+    .stats{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .stat:nth-child(2){
+        border-right:0;
+    }
+
+    .products{
+        grid-template-columns:1fr;
+    }
+
+    .feature-grid{
+        grid-template-columns:1fr;
+    }
+
+    .section-head{
+        display:block;
+    }
+
+    .section-head p{
+        margin-top:12px;
+    }
+
+    .hero{
+        min-height:700px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <a class="brand" href="#home">
+
+        <span class="logo">C</span>
+
+        Colazo
+
+        <span class="env">
+            NA-UAT
+        </span>
+
+    </a>
+
+    <nav>
+        <a href="#products">Business</a>
+        <a href="#experience">Experience</a>
+        <a href="#campaign">Campaign</a>
+    </nav>
+
+</header>
+
+
+<main id="home">
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <span class="eyebrow">
+            Colazo • North America • Security org 
+        </span>
+
+        <h1>
+            Security Scanning Org
+        </h1>
+
+        <p>
+            A modern North American corporate experience connecting
+            people, business, innovation and the moments that matter.
+        </p>
+
+        <div class="actions">
+
+            <a class="btn primary" href="#products">
+                Explore business
+            </a>
+
+            <a class="btn secondary" href="#campaign">
+                Learn more
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<div class="wrap">
+
+    <div class="stats">
+
+        <div class="stat">
+            <strong>200+</strong>
+            <span>markets worldwide</span>
+        </div>
+
+        <div class="stat">
+            <strong>50M+</strong>
+            <span>digital interactions</span>
+        </div>
+
+        <div class="stat">
+            <strong>24/7</strong>
+            <span>business touchpoints</span>
+        </div>
+
+        <div class="stat">
+            <strong>100%</strong>
+            <span>UAT-ready flow</span>
+        </div>
+
+    </div>
+
+</div>
+
+
+<section id="products">
+
+<div class="wrap">
+
+    <div class="section-head">
+
+        <h2>
+            North America business experience
+        </h2>
+
+        <p>
+            Explore a localized corporate experience designed around
+            customers, partners, employees and digital business journeys.
+        </p>
+
+    </div>
+
+
+    <div class="products">
+
+
+        <article class="product-card">
+
+            <div
+                class="product-image"
+                style="
+                background-image:url(
+                'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=900'
+                )">
+            </div>
+
+            <div class="product-body">
+
+                <span class="pill">
+                    Business
+                </span>
+
+                <h3>
+                    Our Business
+                </h3>
+
+                <p>
+                    Explore business capabilities, operations and
+                    customer-focused digital experiences.
+                </p>
+
+                <button class="outline-btn">
+                    Explore
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <article class="product-card">
+
+            <div
+                class="product-image"
+                style="
+                background-image:url(
+                'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=900'
+                )">
+            </div>
+
+            <div class="product-body">
+
+                <span class="pill">
+                    People
+                </span>
+
+                <h3>
+                    Our People
+                </h3>
+
+                <p>
+                    Connecting teams and creating meaningful experiences
+                    across the North American business environment.
+                </p>
+
+                <button class="outline-btn">
+                    Discover
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <article class="product-card">
+
+            <div
+                class="product-image"
+                style="
+                background-image:url(
+                'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=900'
+                )">
+            </div>
+
+            <div class="product-body">
+
+                <span class="pill">
+                    Innovation
+                </span>
+
+                <h3>
+                    Innovation
+                </h3>
+
+                <p>
+                    Digital solutions and new ways of working designed
+                    for a changing world.
+                </p>
+
+                <button class="outline-btn">
+                    Explore
+                </button>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+</div>
+
+</section>
+
+
+<section id="experience">
+
+<div class="wrap">
+
+    <div class="section-head">
+
+        <h2>
+            Experience the company
+        </h2>
+
+        <p>
+            Components designed to demonstrate a polished regional
+            corporate experience across web, mobile and service journeys.
+        </p>
+
+    </div>
+
+
+    <div class="feature-grid">
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                ✦
+            </div>
+
+            <div>
+
+                <h3>
+                    Customer focused
+                </h3>
+
+                <p>
+                    Digital experiences designed around customer needs
+                    and personalized journeys.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                ◎
+            </div>
+
+            <div>
+
+                <h3>
+                    Connected business
+                </h3>
+
+                <p>
+                    Connect teams, partners and customers through
+                    integrated digital experiences.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                ↗
+            </div>
+
+            <div>
+
+                <h3>
+                    Digital-first
+                </h3>
+
+                <p>
+                    Responsive experiences across desktop, tablet
+                    and mobile devices.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                ★
+            </div>
+
+            <div>
+
+                <h3>
+                    Future ready
+                </h3>
+
+                <p>
+                    Flexible components supporting innovation,
+                    campaigns and future business needs.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<section id="campaign">
+
+<div class="wrap">
+
+    <div class="banner">
+
+        <h2>
+            One company. A world of possibilities.
+        </h2>
+
+        <p>
+            Use this North America UAT page to validate regional content,
+            corporate journeys, business information and digital
+            customer-service entry points before production.
+        </p>
+
+        <a class="btn primary" href="#products">
+            Explore the company
+        </a>
+
+    </div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+    <div>
+        <strong>Colazo</strong>
+        — North America Coke Company UAT Experience
+    </div>
+
+    <div>
+        Demo environment • NA-UAT • © 2026 Colazo
+    </div>
+
+</footer>
+
+
+</body>
+</html>
